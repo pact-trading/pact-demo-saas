@@ -1,6 +1,7 @@
 # Draftboard: a SaaS billed by subscription in USDT through Pact
 
-A small Next.js app (frontend and backend) that sells monthly plans and renews them in USDT on
+A Next.js app (frontend and backend) for a team writing tool: marketing site, pricing table, the
+signed-in workspace and a Plan & billing page. It sells monthly plans and renews them in USDT on
 Whitechain Sepolia through [Pact](https://pay.pactagent.app). It is a separate app that only uses
 Pact's SDK and API, the way a real software business would.
 
@@ -23,6 +24,7 @@ Pact keeper ── SubscriptionManagerV2.charge every period ──▶ webhooks 
 
 ```tsx
 <Subscribe
+  layout="button"            // our own pricing card, Pact's button
   planId={plan.id}
   checkoutOrigin={process.env.NEXT_PUBLIC_PACT_CHECKOUT_ORIGIN}
   plan={{ name: plan.name, price: `$${plan.price}`, interval: plan.interval }}
@@ -52,7 +54,8 @@ Plans are read on the server with the secret key: `pact.subscriptions.listPlans(
 2. `cp .env.example .env.local` and fill it in (`PACT_PLAN_IDS` is optional).
 3. `pnpm install && pnpm build && pnpm start` → http://localhost:3230
 
-Pages: `/` pricing, `/account` (access and every charge, from webhooks), `/admin` (subscribers and webhooks).
+Pages: `/` marketing and pricing, `/app` workspace (Pro features lock and unlock with the subscription),
+`/app/billing` (plan, payment method, billing history with transaction links), `/admin` (subscribers and webhooks).
 
 ## Notes
 

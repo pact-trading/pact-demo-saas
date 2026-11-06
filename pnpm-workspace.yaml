@@ -1,5 +1,6 @@
 # Until @pactagent/* is on npm, the SDK is installed from the packed files in vendor/.
 overrides:
   '@pactagent/core': file:vendor/pactagent-core-0.1.0.tgz
-onlyBuiltDependencies:
-  - sharp
+allowBuilds:
+  sharp: true
+  '@tailwindcss/oxide': true
