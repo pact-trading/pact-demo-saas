@@ -1,3 +1,4 @@
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { DraftboardLogo } from '@/components/logo';
 import { listAccounts, webhookLog } from '@/lib/subscriptions';
@@ -15,7 +16,7 @@ export default function Admin() {
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
           <div className="flex items-center gap-3"><DraftboardLogo /><span className="rounded-md bg-slate-900 px-2 py-0.5 text-xs font-semibold text-white">Admin</span></div>
-          <Link href="/app" className="text-sm text-slate-600 hover:text-slate-900">Open app →</Link>
+          <Link href="/app" className="text-sm text-slate-600 hover:text-slate-900">Open app <ArrowRight className="inline size-3.5 align-[-2px]" /></Link>
         </div>
       </header>
       <div className="mx-auto max-w-6xl px-5 py-8">
@@ -35,7 +36,7 @@ export default function Admin() {
                   <td className="px-4 py-3 font-medium">{a.customer ?? '-'}</td>
                   <td className="px-4 py-3 font-mono text-xs">{a.subscriptionId}</td>
                   <td className="px-4 py-3"><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${badge[a.status]}`}>{a.status.replace('_', ' ')}</span></td>
-                  <td className="px-4 py-3">{a.charges.length} · ${a.charges.reduce((t, c) => t + Number(c.amount), 0).toFixed(2)}</td>
+                  <td className="px-4 py-3">{a.charges.length}, ${a.charges.reduce((t, c) => t + Number(c.amount), 0).toFixed(2)}</td>
                   <td className="px-4 py-3">{a.nextChargeAt && a.access ? new Date(a.nextChargeAt).toLocaleTimeString() : '-'}</td>
                 </tr>
               ))}

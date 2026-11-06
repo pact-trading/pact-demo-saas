@@ -1,5 +1,7 @@
 'use client';
 
+import { ExternalLink } from 'lucide-react';
+
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useSession } from '@/components/app-shell';
@@ -24,8 +26,8 @@ export default function Billing() {
       <p className="mt-1 text-sm text-slate-500">Billed in USDT on Whitechain through Pact.</p>
 
       {welcome && account?.access && (
-        <div className="mt-6 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 p-5 text-white">
-          <p className="text-lg font-semibold">🎉 Welcome to Draftboard {account.planName ?? 'Pro'}</p>
+        <div className="mt-6 rounded-xl bg-brand p-5 text-white">
+          <p className="text-lg font-semibold">Welcome to Draftboard {account.planName ?? 'Pro'}</p>
           <p className="mt-1 text-sm text-indigo-100">Your subscription is active. Renewals run automatically, and we email you before and after each one.</p>
         </div>
       )}
@@ -62,7 +64,7 @@ export default function Billing() {
               <div className="mt-3 flex items-center gap-3">
                 <span className="grid size-10 place-items-center rounded-full bg-[#26A17B] font-bold text-white">₮</span>
                 <div>
-                  <p className="font-medium">USDT · Pact account</p>
+                  <p className="font-medium">USDT, Pact account</p>
                   <p className="text-xs text-slate-500">{account.customer}</p>
                 </div>
               </div>
@@ -73,7 +75,7 @@ export default function Billing() {
           <section className="mt-8">
             <div className="flex items-end justify-between">
               <h2 className="font-semibold">Billing history</h2>
-              <p className="text-sm text-slate-500">{account.charges.length} payments · ${total.toFixed(2)} total</p>
+              <p className="text-sm text-slate-500">{account.charges.length} payments, ${total.toFixed(2)} total</p>
             </div>
             <div className="mt-3 overflow-hidden rounded-xl border border-slate-200">
               <table className="w-full text-left text-sm">
@@ -82,10 +84,10 @@ export default function Billing() {
                   {account.charges.map((c, i) => (
                     <tr key={`${c.at}-${c.txHash}`}>
                       <td className="px-4 py-3">{new Date(c.at).toLocaleString()}</td>
-                      <td className="px-4 py-3">Draftboard {account.planName ?? 'Pro'} · {i === account.charges.length - 1 ? 'first payment' : 'renewal'}</td>
+                      <td className="px-4 py-3">Draftboard {account.planName ?? 'Pro'}, {i === account.charges.length - 1 ? 'first payment' : 'renewal'}</td>
                       <td className="px-4 py-3 font-medium">${c.amount}</td>
                       <td className="px-4 py-3"><span className="rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700">Paid</span></td>
-                      <td className="px-4 py-3">{c.txHash ? <a href={`${explorer}/tx/${c.txHash}`} target="_blank" rel="noreferrer" className="font-medium text-brand hover:underline">View on Whitechain ↗</a> : '-'}</td>
+                      <td className="px-4 py-3">{c.txHash ? <a href={`${explorer}/tx/${c.txHash}`} target="_blank" rel="noreferrer" className="font-medium text-brand hover:underline">View on Whitechain <ExternalLink className="inline size-3.5 align-[-2px]" /></a> : '-'}</td>
                     </tr>
                   ))}
                   {!account.charges.length && <tr><td colSpan={5} className="px-4 py-6 text-center text-slate-500">The first payment is confirming…</td></tr>}

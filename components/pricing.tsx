@@ -1,5 +1,7 @@
 'use client';
 
+import { Check } from 'lucide-react';
+
 import { Subscribe } from '@pactagent/checkout-react';
 import { useRouter } from 'next/navigation';
 
@@ -42,7 +44,7 @@ export function Pricing({ plans }: { plans: PlanCard[] }) {
                 router.push(`/app/billing?subscription=${subscriptionId}&welcome=1`);
               }}
             />
-            <p className={`mt-2 text-center text-xs ${featured ? 'text-slate-400' : 'text-slate-500'}`}>Pay in USDT with your email · cancel anytime</p>
+            <p className={`mt-2 text-center text-xs ${featured ? 'text-slate-400' : 'text-slate-500'}`}>Pay in USDT with your email. Cancel anytime.</p>
             <Features items={FEATURES[plan.name] ?? []} dark={featured} />
             <p className={`mt-6 rounded-lg px-3 py-2 text-xs ${featured ? 'bg-white/10 text-slate-300' : 'bg-amber-50 text-amber-800'}`}>Testnet demo: renews every {plan.demoPeriod} instead of monthly.</p>
           </div>
@@ -56,7 +58,7 @@ function Features({ items, dark = false }: { items: string[]; dark?: boolean }) 
   return (
     <ul className="mt-7 space-y-3 text-sm">
       {items.map(f => (
-        <li key={f} className="flex gap-3"><span className={dark ? 'text-indigo-300' : 'text-brand'}>✓</span><span className={dark ? 'text-slate-200' : 'text-slate-700'}>{f}</span></li>
+        <li key={f} className="flex gap-3"><Check className={`mt-0.5 size-4 shrink-0 ${dark ? 'text-indigo-300' : 'text-brand'}`} /><span className={dark ? 'text-slate-200' : 'text-slate-700'}>{f}</span></li>
       ))}
     </ul>
   );

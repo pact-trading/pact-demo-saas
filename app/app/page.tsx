@@ -1,5 +1,7 @@
 'use client';
 
+import { FileDown, FileText, History, Lock } from 'lucide-react';
+
 import Link from 'next/link';
 import { useSession } from '@/components/app-shell';
 
@@ -43,10 +45,10 @@ export default function Workspace() {
           const locked = d.pro && !pro;
           return (
             <div key={d.title} className={`flex items-center gap-4 border-b border-slate-100 px-4 py-3 last:border-0 ${locked ? 'bg-slate-50 text-slate-400' : 'hover:bg-slate-50'}`}>
-              <span className="text-lg">{locked ? '🔒' : '📄'}</span>
+              <span className="grid size-9 place-items-center rounded-lg bg-slate-100">{locked ? <Lock className="size-4 text-slate-400" /> : <FileText className="size-4 text-slate-500" />}</span>
               <div className="min-w-0 flex-1">
                 <p className={`truncate font-medium ${locked ? '' : 'text-slate-900'}`}>{d.title}</p>
-                <p className="text-xs text-slate-500">{d.who} · {d.words.toLocaleString()} words</p>
+                <p className="text-xs text-slate-500">{d.who}, {d.words.toLocaleString()} words</p>
               </div>
               <span className="text-xs text-slate-500">{locked ? <Link href="/#pricing" className="font-semibold text-brand">Pro</Link> : d.when}</span>
             </div>
@@ -55,9 +57,9 @@ export default function Workspace() {
       </div>
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
-        {[['🕓', 'Version history', 'Restore any earlier version of a draft.'], ['📤', 'Export to PDF', 'Send a polished PDF to your client.']].map(([icon, title, text]) => (
+        {([[History, 'Version history', 'Restore any earlier version of a draft.'], [FileDown, 'Export to PDF', 'Send a polished PDF to your client.']] as const).map(([Icon, title, text]) => (
           <div key={title} className={`rounded-xl border p-5 ${pro ? 'border-slate-200' : 'border-dashed border-slate-300'}`}>
-            <p className="font-semibold">{icon} {title} {!pro && <span className="ml-2 rounded-full bg-indigo-100 px-2 py-0.5 text-[11px] font-semibold text-indigo-700">Pro</span>}</p>
+            <p className="flex items-center gap-2 font-semibold"><Icon className="size-4 text-brand" /> {title} {!pro && <span className="ml-2 rounded-full bg-indigo-100 px-2 py-0.5 text-[11px] font-semibold text-indigo-700">Pro</span>}</p>
             <p className="mt-1 text-sm text-slate-600">{text}</p>
           </div>
         ))}

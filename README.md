@@ -59,7 +59,6 @@ Pages: `/` marketing and pricing, `/app` workspace (Pro features lock and unlock
 
 ## Notes
 
-- Until `@pactagent/*` is published on npm, the SDK is installed from the packed files in `vendor/`.
 - The popup only reports back to the origin that opened it, and the app still grants access only from
   the signed webhook.
 - Accounts are kept in `data/app.json` for the demo.

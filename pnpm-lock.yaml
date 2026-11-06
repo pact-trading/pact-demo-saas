@@ -4,19 +4,19 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  '@pactagent/core': file:vendor/pactagent-core-0.1.0.tgz
-
 importers:
 
   .:
     dependencies:
       '@pactagent/checkout-react':
-        specifier: file:vendor/pactagent-checkout-react-0.1.0.tgz
-        version: file:vendor/pactagent-checkout-react-0.1.0.tgz(react@19.3.1)(typescript@5.9.3)
+        specifier: ^0.1.0
+        version: 0.1.0(react@19.3.1)(typescript@5.9.3)
       '@pactagent/node':
-        specifier: file:vendor/pactagent-node-0.1.0.tgz
-        version: file:vendor/pactagent-node-0.1.0.tgz(typescript@5.9.3)
+        specifier: ^0.1.0
+        version: 0.1.0(typescript@5.9.3)
+      lucide-react:
+        specifier: 0.468.0
+        version: 0.468.0(react@19.3.1)
       next:
         specifier: ^15.5.6
         version: 15.5.29(@types/node@22.20.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -313,19 +313,19 @@ packages:
     resolution: {integrity: sha512-jCs9ldd7NwzpgXDIf6P3+NrHh9/sD6CQdxHyjQI+h/6rDNo88ypBxxz45UDuZHz9r3tNz7N/VInSVoVdtXEI4A==}
     engines: {node: ^14.21.3 || >=16}
 
-  '@pactagent/checkout-react@file:vendor/pactagent-checkout-react-0.1.0.tgz':
-    resolution: {integrity: sha512-FJeIq5rSoy8ChypFn0SwHrmkLCTu6wEQWmFs9oYrRDe6xS/92Ujl2r5E9WhD3p2O05GbX4/djVQNtRfj97SI0Q==, tarball: file:vendor/pactagent-checkout-react-0.1.0.tgz}
-    version: 0.1.0
+  '@pactagent/checkout-react@0.1.0':
+    resolution: {integrity: sha512-61Lim1h/J3SimCLbR4oVK+jDsTpOITNTcEmqILDl33o1u99/iccSRHfl3kOe+XFd+R9sQZPw1pQY4qBHHFqsig==}
+    engines: {node: '>=20'}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
 
-  '@pactagent/core@file:vendor/pactagent-core-0.1.0.tgz':
-    resolution: {integrity: sha512-qbUWXYLWisiDJsuGgPjmaETRj0GzguP2giL+8TIT+EBZS8xOI9eRAYVkw5Mnsi+w3eARONwAg3ivXv+V11M0sA==, tarball: file:vendor/pactagent-core-0.1.0.tgz}
-    version: 0.1.0
+  '@pactagent/core@0.1.0':
+    resolution: {integrity: sha512-RUiMtHAiLuc45ZwCEmUZEZ7jfAiqPWObafOj89Xy1WCQJqAY+mBHojtCtsUacEyAukLTzn0/QclBs9Xf/Aj/4w==}
+    engines: {node: '>=20'}
 
-  '@pactagent/node@file:vendor/pactagent-node-0.1.0.tgz':
-    resolution: {integrity: sha512-dsRwV5bUNVA4XwpPIRLWyJJI04362GxKLfDfjyLXNl9lG4TiChmxt03OaRQXXkZbnYlP1fv9t3XAv9Zil7qNHA==, tarball: file:vendor/pactagent-node-0.1.0.tgz}
-    version: 0.1.0
+  '@pactagent/node@0.1.0':
+    resolution: {integrity: sha512-Aqg5uaFhTb1BpLN3ydneA6ZJjbJdjF0nsVueg7rBKRe+XmpVcJ7VmDXZ3eydi4NVHrz8fv0xlxwDY8+hFGqL3g==}
+    engines: {node: '>=20'}
 
   '@scure/base@1.2.6':
     resolution: {integrity: sha512-g/nm5FgUa//MCj1gV09zTJTaM6KBAHqLN907YVQqf7zC49+DcO4B1so4ZX07Ef10Twr6nuqYEH9GEggFXA4Fmg==}
@@ -556,6 +556,11 @@ packages:
   lightningcss@1.30.1:
     resolution: {integrity: sha512-xi6IyHML+c9+Q3W0S4fCQJOym42pyurFiJUHEcEyHS0CeKzia4yZDEsLlqOFykxOdHpNy0NmvVO31vcSqAxJCg==}
     engines: {node: '>= 12.0.0'}
+
+  lucide-react@0.468.0:
+    resolution: {integrity: sha512-6koYRhnM2N0GGZIdXzSeiNwguv1gt/FAjZOiPl76roBi3xKEXa4WmfpxgQwTTL4KipXjefrnf3oV4IsYhi4JFA==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
 
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
@@ -883,9 +888,9 @@ snapshots:
 
   '@noble/hashes@1.8.0': {}
 
-  '@pactagent/checkout-react@file:vendor/pactagent-checkout-react-0.1.0.tgz(react@19.3.1)(typescript@5.9.3)':
+  '@pactagent/checkout-react@0.1.0(react@19.3.1)(typescript@5.9.3)':
     dependencies:
-      '@pactagent/core': file:vendor/pactagent-core-0.1.0.tgz(typescript@5.9.3)
+      '@pactagent/core': 0.1.0(typescript@5.9.3)
       react: 19.3.1
     transitivePeerDependencies:
       - bufferutil
@@ -894,7 +899,7 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@pactagent/core@file:vendor/pactagent-core-0.1.0.tgz(typescript@5.9.3)':
+  '@pactagent/core@0.1.0(typescript@5.9.3)':
     dependencies:
       viem: 2.57.16(typescript@5.9.3)
     transitivePeerDependencies:
@@ -904,9 +909,9 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@pactagent/node@file:vendor/pactagent-node-0.1.0.tgz(typescript@5.9.3)':
+  '@pactagent/node@0.1.0(typescript@5.9.3)':
     dependencies:
-      '@pactagent/core': file:vendor/pactagent-core-0.1.0.tgz(typescript@5.9.3)
+      '@pactagent/core': 0.1.0(typescript@5.9.3)
     transitivePeerDependencies:
       - bufferutil
       - mppx
@@ -1088,6 +1093,10 @@ snapshots:
       lightningcss-linux-x64-musl: 1.30.1
       lightningcss-win32-arm64-msvc: 1.30.1
       lightningcss-win32-x64-msvc: 1.30.1
+
+  lucide-react@0.468.0(react@19.3.1):
+    dependencies:
+      react: 19.3.1
 
   magic-string@0.30.21:
     dependencies:

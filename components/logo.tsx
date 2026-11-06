@@ -1,19 +1,31 @@
-/** Draftboard mark: two stacked pages with a writing stroke. */
+'use client';
+
+import { useEffect, useState } from 'react';
+
+/** Draftboard generated mark. */
 export function DraftboardMark({ className = 'size-8' }: { className?: string }) {
+  const [src, setSrc] = useState('/brand/draftboard.png');
+  useEffect(() => {
+    let active = true;
+    const load = async () => {
+      try {
+        const response = await fetch('/api/brand', { cache: 'no-store' });
+        if (!response.ok) return;
+        const brand = (await response.json()) as { logoUrl: string | null };
+        if (active && brand.logoUrl) {
+          setSrc(brand.logoUrl);
+          document.querySelector('link[rel="icon"]')?.setAttribute('href', brand.logoUrl);
+        }
+      } catch { /* Keep the bundled logo while the API is unavailable. */ }
+    };
+    void load();
+    const refresh = () => { if (document.visibilityState === 'visible') void load(); };
+    document.addEventListener('visibilitychange', refresh);
+    return () => { active = false; document.removeEventListener('visibilitychange', refresh); };
+  }, []);
   return (
-    <svg viewBox="0 0 40 40" className={className} aria-hidden>
-      <defs>
-        <linearGradient id="db-g" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#6366F1" />
-          <stop offset="1" stopColor="#8B5CF6" />
-        </linearGradient>
-      </defs>
-      <rect width="40" height="40" rx="10" fill="url(#db-g)" />
-      <rect x="13" y="9" width="17" height="21" rx="3" fill="#fff" opacity=".35" />
-      <rect x="9" y="12" width="17" height="21" rx="3" fill="#fff" />
-      <path d="M12.5 19h9M12.5 23h6" stroke="#6366F1" strokeWidth="2" strokeLinecap="round" />
-      <path d="M12.5 27.5c1.5-1.6 3-1.6 4.4 0s2.9 1.6 4.4 0" fill="none" stroke="#8B5CF6" strokeWidth="2" strokeLinecap="round" />
-    </svg>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={src} alt="" width={32} height={32} className={`${className} rounded-lg object-cover`} referrerPolicy="no-referrer" />
   );
 }
 

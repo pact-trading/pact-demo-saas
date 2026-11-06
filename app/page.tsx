@@ -1,3 +1,4 @@
+import { ArrowRight, FileText, History, MessageSquare, PenLine, Share, ShieldCheck, Wallet } from 'lucide-react';
 import Link from 'next/link';
 import { DraftboardLogo } from '@/components/logo';
 import { Pricing, type PlanCard } from '@/components/pricing';
@@ -34,12 +35,11 @@ export default async function Landing() {
       </header>
 
       <section className="relative overflow-hidden">
-        <div className="absolute inset-x-0 -top-40 -z-10 h-[520px] bg-[radial-gradient(60%_60%_at_50%_0%,rgba(99,102,241,0.18),transparent)]" />
         <div className="mx-auto max-w-6xl px-5 pb-10 pt-20 text-center">
           <a href="#pricing" className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600">
-            <span className="rounded-full bg-brand px-2 py-0.5 text-white">New</span> Pay for Draftboard in USDT, no wallet needed →
+            <span className="rounded-full bg-brand px-2 py-0.5 text-white">New</span> Pay for Draftboard in USDT, no wallet needed <ArrowRight className="inline size-3.5 align-[-2px]" />
           </a>
-          <h1 className="mx-auto mt-6 max-w-3xl text-5xl font-semibold tracking-tight text-slate-900 sm:text-6xl">Write together. <span className="bg-gradient-to-r from-indigo-500 to-violet-500 bg-clip-text text-transparent">Ship faster.</span></h1>
+          <h1 className="mx-auto mt-6 max-w-3xl text-5xl font-semibold tracking-tight text-slate-900 sm:text-6xl">Write together. <span className="text-brand">Ship faster.</span></h1>
           <p className="mx-auto mt-5 max-w-xl text-lg text-slate-600">Draftboard is the shared writing space for small teams: drafts, comments, suggestions and every version, in one calm place.</p>
           <div className="mt-8 flex justify-center gap-3">
             <a href="#pricing" className="btn btn-brand px-5 py-3">Start free trial</a>
@@ -62,15 +62,15 @@ export default async function Landing() {
         <h2 className="max-w-xl text-3xl font-semibold tracking-tight">Everything a team needs to go from first draft to published.</h2>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            ['✍️', 'Write in real time', 'Everyone edits the same draft, with live cursors and no merge conflicts.'],
-            ['💬', 'Comments & suggestions', 'Suggest a change, discuss it inline, accept it with one click.'],
-            ['🕓', 'Every version, forever', 'Scroll back through every save. Restore any paragraph.'],
-            ['📤', 'Export anywhere', 'PDF, Markdown, Google Docs or your CMS, formatting intact.'],
-            ['🔒', 'Roles & approvals', 'Decide who can edit, comment or publish each document.'],
-            ['₮', 'Pay in USDT', 'Subscribe with your email through Pact. Renewals run automatically within the cap you approve.'],
+            [<PenLine key="a" className="size-5 text-brand" strokeWidth={1.8} />, 'Write in real time', 'Everyone edits the same draft, with live cursors and no merge conflicts.'],
+            [<MessageSquare key="b" className="size-5 text-brand" strokeWidth={1.8} />, 'Comments & suggestions', 'Suggest a change, discuss it inline, accept it with one click.'],
+            [<History key="c" className="size-5 text-brand" strokeWidth={1.8} />, 'Every version, forever', 'Scroll back through every save. Restore any paragraph.'],
+            [<Share key="d" className="size-5 text-brand" strokeWidth={1.8} />, 'Export anywhere', 'PDF, Markdown, Google Docs or your CMS, formatting intact.'],
+            [<ShieldCheck key="e" className="size-5 text-brand" strokeWidth={1.8} />, 'Roles & approvals', 'Decide who can edit, comment or publish each document.'],
+            [<Wallet key="f" className="size-5 text-brand" strokeWidth={1.8} />, 'Pay in USDT', 'Subscribe with your email through Pact. Renewals run automatically within the cap you approve.'],
           ].map(([icon, title, text]) => (
-            <div key={title} className="rounded-2xl border border-slate-200 p-6">
-              <span className="grid size-10 place-items-center rounded-xl bg-indigo-50 text-lg">{icon}</span>
+            <div key={String(title)} className="rounded-2xl border border-slate-200 p-6">
+              <span className="grid size-10 place-items-center rounded-xl bg-indigo-50">{icon}</span>
               <p className="mt-4 font-semibold">{title}</p>
               <p className="mt-1 text-sm text-slate-600">{text}</p>
             </div>
@@ -105,7 +105,7 @@ export default async function Landing() {
       <footer className="border-t border-slate-100">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-8 text-sm text-slate-500">
           <DraftboardLogo />
-          <p>© 2026 Draftboard, Inc. · Billing by Pact on Whitechain · Testnet demo</p>
+          <p>© 2026 Draftboard, Inc. Billing by Pact on Whitechain. Testnet demo.</p>
           <Link href="/admin" className="hover:text-slate-900">Admin</Link>
         </div>
       </footer>
@@ -119,14 +119,13 @@ function AppPreview() {
     <div className="mx-auto max-w-5xl px-5 pb-20">
       <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.35)]">
         <div className="flex items-center gap-2 border-b border-slate-100 bg-slate-50 px-4 py-3">
-          <span className="size-3 rounded-full bg-red-300" /><span className="size-3 rounded-full bg-amber-300" /><span className="size-3 rounded-full bg-green-300" />
-          <span className="ml-4 rounded-md bg-white px-3 py-1 text-xs text-slate-400">app.draftboard.io/launch-plan</span>
+          <span className="rounded-md bg-white px-3 py-1 text-xs text-slate-400">app.draftboard.io/launch-plan</span>
         </div>
         <div className="grid grid-cols-[200px_1fr] text-left">
           <aside className="border-r border-slate-100 bg-slate-50/60 p-4 text-sm">
             <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">Drafts</p>
             {['Launch plan', 'Q4 newsletter', 'Pricing page copy', 'Onboarding emails', 'Press release'].map((d, i) => (
-              <p key={d} className={`mt-2 rounded-md px-2 py-1.5 ${i === 0 ? 'bg-white font-medium shadow-sm' : 'text-slate-600'}`}>📄 {d}</p>
+              <p key={d} className={`mt-2 rounded-md px-2 py-1.5 ${i === 0 ? 'bg-white font-medium shadow-sm' : 'text-slate-600'}`}><FileText className="mr-2 inline size-3.5 align-[-2px] text-slate-400" />{d}</p>
             ))}
           </aside>
           <div className="p-8">
@@ -134,7 +133,7 @@ function AppPreview() {
             <p className="mt-2 text-2xl font-semibold">Launch plan</p>
             <p className="mt-4 text-sm leading-7 text-slate-600">We announce on <span className="rounded bg-indigo-100 px-1">Tuesday at 9 AM</span> with a short post, a demo video and an email to the waitlist. <span className="border-b-2 border-violet-400">Leo</span> owns the video; Maya writes the post.</p>
             <div className="mt-5 max-w-sm rounded-xl border border-slate-200 bg-white p-3 text-xs shadow-sm">
-              <p className="font-semibold">Maya · comment</p>
+              <p className="font-semibold">Maya commented</p>
               <p className="mt-1 text-slate-600">Can we move this to Wednesday? The video needs one more pass.</p>
             </div>
           </div>
