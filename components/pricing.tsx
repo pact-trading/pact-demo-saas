@@ -35,6 +35,7 @@ export function Pricing({ plans }: { plans: PlanCard[] }) {
             <p className={`mt-1 text-sm ${featured ? 'text-slate-400' : 'text-slate-500'}`}>{plan.description}</p>
             <Subscribe
               layout="button"
+              mode="embedded"
               planId={plan.id}
               checkoutOrigin={process.env.NEXT_PUBLIC_PACT_CHECKOUT_ORIGIN}
               buttonLabel={`Get ${plan.name}`}

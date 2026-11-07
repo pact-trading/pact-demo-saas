@@ -4,3 +4,7 @@ minimumReleaseAgeExclude:
 allowBuilds:
   sharp: true
   '@tailwindcss/oxide': true
+# Temporary, until @pactagent/checkout-react 0.2.0 (embedded <Subscribe>) is on npm: the local package
+# declares its core dependency as workspace:*, so point it at the published core.
+overrides:
+  '@pactagent/core': ^0.1.0

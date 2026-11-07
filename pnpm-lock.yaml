@@ -4,13 +4,16 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@pactagent/core': ^0.1.0
+
 importers:
 
   .:
     dependencies:
       '@pactagent/checkout-react':
-        specifier: ^0.1.0
-        version: 0.1.0(react@19.3.1)(typescript@5.9.3)
+        specifier: file:../pact-pay/packages/checkout-react
+        version: file:../pact-pay/packages/checkout-react(react@19.3.1)(typescript@5.9.3)
       '@pactagent/node':
         specifier: ^0.1.0
         version: 0.1.0(typescript@5.9.3)
@@ -313,8 +316,8 @@ packages:
     resolution: {integrity: sha512-jCs9ldd7NwzpgXDIf6P3+NrHh9/sD6CQdxHyjQI+h/6rDNo88ypBxxz45UDuZHz9r3tNz7N/VInSVoVdtXEI4A==}
     engines: {node: ^14.21.3 || >=16}
 
-  '@pactagent/checkout-react@0.1.0':
-    resolution: {integrity: sha512-61Lim1h/J3SimCLbR4oVK+jDsTpOITNTcEmqILDl33o1u99/iccSRHfl3kOe+XFd+R9sQZPw1pQY4qBHHFqsig==}
+  '@pactagent/checkout-react@file:../pact-pay/packages/checkout-react':
+    resolution: {directory: ../pact-pay/packages/checkout-react, type: directory}
     engines: {node: '>=20'}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
@@ -888,7 +891,7 @@ snapshots:
 
   '@noble/hashes@1.8.0': {}
 
-  '@pactagent/checkout-react@0.1.0(react@19.3.1)(typescript@5.9.3)':
+  '@pactagent/checkout-react@file:../pact-pay/packages/checkout-react(react@19.3.1)(typescript@5.9.3)':
     dependencies:
       '@pactagent/core': 0.1.0(typescript@5.9.3)
       react: 19.3.1
