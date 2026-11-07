@@ -17,7 +17,8 @@ export interface Account {
 export interface WebhookLogEntry { id: string; type: string; objectId: string; result: string; receivedAt: string; attempt?: number }
 interface Book { accounts: Account[]; webhooks: WebhookLogEntry[] }
 
-const dir = join(process.cwd(), 'data'), file = join(dir, 'app.json');
+// Vercel functions can only write to /tmp (per instance, cleared on a cold start); locally the repo's data/.
+const dir = process.env.VERCEL ? join('/tmp', 'draftboard') : join(process.cwd(), 'data'), file = join(dir, 'app.json');
 const read = (): Book => (existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : { accounts: [], webhooks: [] });
 const write = (book: Book) => { mkdirSync(dir, { recursive: true }); writeFileSync(file, JSON.stringify(book, null, 2)); };
 

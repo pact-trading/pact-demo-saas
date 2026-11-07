@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@pactagent/checkout-react": "^0.1.0",
+    "@pactagent/checkout-react": "^0.2.0",
     "@pactagent/node": "^0.1.0",
     "lucide-react": "0.468.0",
     "next": "^15.5.6",
