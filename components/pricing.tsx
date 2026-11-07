@@ -2,7 +2,7 @@
 
 import { Check } from 'lucide-react';
 
-import { Subscribe } from '@pactagent/checkout-react';
+import { EmbeddedSubscribe } from './embedded-subscribe';
 import { useRouter } from 'next/navigation';
 
 export interface PlanCard { id: string; name: string; price: string; description: string; demoPeriod: string }
@@ -33,12 +33,10 @@ export function Pricing({ plans }: { plans: PlanCard[] }) {
             <p className="font-semibold">{plan.name}</p>
             <p className="mt-4 text-4xl font-semibold tracking-tight">${plan.price}<span className={`text-base font-normal ${featured ? 'text-slate-400' : 'text-slate-500'}`}> /month</span></p>
             <p className={`mt-1 text-sm ${featured ? 'text-slate-400' : 'text-slate-500'}`}>{plan.description}</p>
-            <Subscribe
-              layout="button"
-              mode="embedded"
+            <EmbeddedSubscribe
               planId={plan.id}
               checkoutOrigin={process.env.NEXT_PUBLIC_PACT_CHECKOUT_ORIGIN}
-              buttonLabel={`Get ${plan.name}`}
+              label={`Get ${plan.name}`}
               className={`btn mt-6 w-full ${featured ? 'btn-brand' : 'btn-dark'}`}
               onSuccess={({ subscriptionId }) => {
                 try { localStorage.setItem('draftboard-subscription', subscriptionId); } catch { /* private mode */ }
